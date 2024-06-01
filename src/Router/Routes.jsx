@@ -5,6 +5,7 @@ import SignUp from "../Pages/SignUp";
 import DashBoard from "../MainLayOut/DashBoard";
 import MyAppointments from "../Pages/Dashboard/MYyAppointments/MyAppointments";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
+import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
         {
           path:'allUser',
           element:<AllUser></AllUser>
+        },
+        {
+          path:'addBanner',
+          element:<AddBanner></AddBanner>
         }
       ]
     }

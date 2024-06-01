@@ -9,6 +9,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const location = useLocation()
+    // eslint-disable-next-line no-unused-vars
     const form = location?.state || '/'
 
     const handleSubmit = async (e) => {

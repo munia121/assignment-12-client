@@ -1,4 +1,4 @@
-import { FaEnvelope, FaHome, FaList,  FaUsers } from 'react-icons/fa';
+import { FaEnvelope, FaHome,   FaUsers } from 'react-icons/fa';
 import { FaPersonRifle,  } from 'react-icons/fa6';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
@@ -23,9 +23,9 @@ const DashBoard = () => {
                                     Admin Home</NavLink>
                             </li>
                             <li>
-                                <NavLink to={'/dashboard/manageItems'}>
-                                    <FaList></FaList>
-                                    Manage Items</NavLink>
+                                <NavLink to={'/dashboard/addBanner'}>
+                                    
+                                    Add Banner</NavLink>
                             </li>
                            
                             <li>

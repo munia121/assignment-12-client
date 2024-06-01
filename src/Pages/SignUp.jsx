@@ -11,7 +11,7 @@ import useAxiosSecure from '../hooks/useAxiosSecure'
 
 const SignUp = () => {
     const axiosCommon = useAxiosCommon()
-    const { createUser, signInWithGoogle, updateUserProfile, loading, setLoading } = useAuth()
+    const { createUser,  updateUserProfile,  } = useAuth()
     const [passError, setPassError] = useState('')
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
