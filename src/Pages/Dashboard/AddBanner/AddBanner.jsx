@@ -1,7 +1,29 @@
+
 import toast from "react-hot-toast";
-import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const AddBanner = () => {
+    const axiosSecure = useAxiosSecure()
+    const navigate = useNavigate()
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async (addBanner) => {
+            const { data } = await axiosSecure.post(`/addBanner`, addBanner)
+            return data
+        },
+        onSuccess: ()=> {
+            console.log('data saved successfully')
+            toast.success('Banner data added successfully')
+            navigate('/dashboard/allBanner')
+            
+        }
+
+    })
+
+
+
     const handlerBanner = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -12,13 +34,20 @@ const AddBanner = () => {
         const couponRate = parseInt(form.couponRate.value);
         const description = form.description.value;
         const photo = form.photo.value;
+        const isActive = false
 
-        const addBanner = { name, title, couponName, couponRate, description,  photo }
+        const addBanner = { name, title, couponName, couponRate, description, photo, isActive }
         console.log(addBanner)
 
+        try{
+            mutateAsync(addBanner)
+           
+        }
+        catch(err){
+            console.log(err)
+        }
 
-        
-       
+
     }
 
 

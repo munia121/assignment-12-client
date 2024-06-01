@@ -6,6 +6,8 @@ import DashBoard from "../MainLayOut/DashBoard";
 import MyAppointments from "../Pages/Dashboard/MYyAppointments/MyAppointments";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
+import AllBanner from "../Pages/Dashboard/AllBanner/AllBanner";
+import Home from "../Pages/HomePage/Home/Home";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -13,7 +15,7 @@ export const router = createBrowserRouter([
       children:[
         {
             path:'/',
-            element: <div>hello</div>
+            element: <Home></Home>
         },
         {
           path:'/login',
@@ -40,6 +42,10 @@ export const router = createBrowserRouter([
         {
           path:'addBanner',
           element:<AddBanner></AddBanner>
+        },
+        {
+          path:'allBanner',
+          element:<AllBanner></AllBanner>
         }
       ]
     }

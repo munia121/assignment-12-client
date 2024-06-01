@@ -33,6 +33,11 @@ const DashBoard = () => {
                                     <FaUsers></FaUsers>
                                     All Users</NavLink>
                             </li>
+                            <li>
+                                <NavLink to={'/dashboard/allBanner'}>
+                                    <FaUsers></FaUsers>
+                                    All Banner</NavLink>
+                            </li>
                         </>
                             :
                             <>
