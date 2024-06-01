@@ -1,18 +1,20 @@
 
 import { FcGoogle } from 'react-icons/fc'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import useAxiosCommon from '../hooks/useAxiosCommon'
-import { Link,  useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import UploadImage from '../Component/UploadImage/UploadImage'
 import useAuth from '../hooks/useAuth'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+import useAxiosSecure from '../hooks/useAxiosSecure'
 
 const SignUp = () => {
     const axiosCommon = useAxiosCommon()
-    const { createUser, signInWithGoogle, updateUserProfile, loading, setLoading} = useAuth()
+    const { createUser, signInWithGoogle, updateUserProfile, loading, setLoading } = useAuth()
     const [passError, setPassError] = useState('')
     const navigate = useNavigate()
+    const axiosSecure = useAxiosSecure()
 
     const { data: districtData = [] } = useQuery({
         queryKey: ['district'],
@@ -30,6 +32,16 @@ const SignUp = () => {
         }
     })
 
+    const { mutateAsync } = useMutation({
+        mutationFn: async (userData) => {
+            const { data } = await axiosSecure.post(`/users`, userData)
+            return data
+        },
+
+    })
+
+
+
     // console.log(districtData)
     const handleSubmit = async (e) => {
 
@@ -40,38 +52,45 @@ const SignUp = () => {
         const password = form.password.value
         const confirmPass = form.confirmPass.value
         const district = form.district.value
-        const upazila =form.upazila.value
-        const bloodGroup =form.bloodGroup.value
+        const upazila = form.upazila.value
+        const bloodGroup = form.bloodGroup.value
         const image = form.image.files[0]
+        const isActive = true
 
-        if(password !== confirmPass){
+        if (password !== confirmPass) {
             return setPassError('password not match!!')
         }
-        else{
+        else {
             setPassError('')
         }
         const formData = new FormData()
-        formData.append('image',image)
-    
-        console.table({name, email, password, confirmPass,district,upazila, bloodGroup, image})
-        
+        formData.append('image', image)
 
-        try{
+        // console.table({ name, email, password, confirmPass, district, upazila, bloodGroup, image, isActive })
+        
+        
+        
+        
+        try {
             const image_url = await UploadImage(image)
             console.log(image_url)
-
+            
             const user = await createUser(email, password)
             console.log(user)
-
+            
             await updateUserProfile(name, image_url)
+            const userData = { name, email, district, upazila, bloodGroup, image:image_url, isActive }
+
+            mutateAsync(userData)
+
             navigate('/')
             toast.success('Sign Up successfully')
         }
-        catch (error){
-            // 
+        catch (error) {
+            console.log(error.message)
         }
-        
-    }    
+
+    }
 
 
 
@@ -85,7 +104,7 @@ const SignUp = () => {
                     <p className='text-sm text-gray-400'>Welcome to Diagnostic Center</p>
                 </div>
                 <form
-                onSubmit={handleSubmit}
+                    onSubmit={handleSubmit}
                     noValidate=''
                     action=''
                     className='space-y-6 ng-untouched ng-pristine ng-valid'
@@ -182,7 +201,7 @@ const SignUp = () => {
                                     className=' border w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
                                     name='upazila'
                                 >   <option value="select">select</option>
-                                     {upazilatData.map(data => (
+                                    {upazilatData.map(data => (
                                         <option value={data.name} key={data._id}>
                                             {data.name}
                                         </option>
@@ -205,7 +224,7 @@ const SignUp = () => {
                                     </label>
                                 </div>
                                 <input
-                                
+
                                     type='password'
                                     name='password'
                                     required
@@ -223,7 +242,7 @@ const SignUp = () => {
                                     type='password'
                                     name='confirmPass'
                                     // autoComplete='new-password'
-                                    
+
                                     required
                                     placeholder='*******'
                                     className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'

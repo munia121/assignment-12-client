@@ -9,6 +9,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 const Navbar = () => {
     const { user, logOut } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
+    
 
     return (
         <div className='fixed w-full bg-white z-10 shadow-sm'>
@@ -33,13 +34,13 @@ const Navbar = () => {
                                         </button>
                                     )}
                                 </div>
-                               
+
                                 {/* Dropdown btn */}
                                 component
                                 <div
                                     onClick={() => setIsOpen(!isOpen)}
                                     className='p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
-                                    >
+                                >
                                     <AiOutlineMenu />
                                     <div className='hidden md:block'>
                                         {/* Avatar */}
@@ -71,6 +72,10 @@ const Navbar = () => {
                                                     className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
                                                 >
                                                     Logout
+                                                </div>
+                                                <div className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>
+                                                    
+                                                  <Link to={'/dashboard'}>Dashboard</Link>
                                                 </div>
                                             </>
                                         ) : (
