@@ -1,8 +1,15 @@
 /* eslint-disable react/prop-types */
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
-import { GoogleAuthProvider } from "firebase/auth/web-extension"
+// import { createUserWithEmailAndPassword,  getAuth,  onAuthStateChanged,  signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
+// import { GoogleAuthProvider } from "firebase/auth/web-extension"
+// import { createContext, useEffect, useState } from "react"
+// import { app } from "../firebase/firebase"
+// import { app } from "../firebase/firebase"
+
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth"
 import { createContext, useEffect, useState } from "react"
-import { app } from "../firebase/firebase"
+// import { app } from "../firebase/firebase.config"
+import { GoogleAuthProvider } from "firebase/auth/web-extension"
+import { app } from "../firebase/firebase.config"
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -27,10 +34,10 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    const resetPassword = email => {
-        setLoading(true)
-        return sendPasswordResetEmail(auth, email)
-    }
+    // const resetPassword = email => {
+    //     setLoading(true)
+    //     return sendPasswordResetEmail(auth, email)
+    // }
 
 
 
@@ -66,7 +73,7 @@ const AuthProvider = ({ children }) => {
         signIn,
         logOut,
         signInWithGoogle,
-        resetPassword,
+        
         updateUserProfile,
     }
 
