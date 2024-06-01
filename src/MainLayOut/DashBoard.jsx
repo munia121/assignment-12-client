@@ -1,12 +1,12 @@
 import { FaEnvelope, FaHome, FaList,  FaUsers } from 'react-icons/fa';
-import { FaPersonRifle } from 'react-icons/fa6';
+import { FaPersonRifle,  } from 'react-icons/fa6';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 
 const DashBoard = () => {
 
-    // const [isAdmin] = useAdmin()
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
+    // const isAdmin = true
 
 
     return (
@@ -29,7 +29,7 @@ const DashBoard = () => {
                             </li>
                            
                             <li>
-                                <NavLink to={'/dashboard/users'}>
+                                <NavLink to={'/dashboard/allUser'}>
                                     <FaUsers></FaUsers>
                                     All Users</NavLink>
                             </li>

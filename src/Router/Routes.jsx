@@ -4,6 +4,7 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import DashBoard from "../MainLayOut/DashBoard";
 import MyAppointments from "../Pages/Dashboard/MYyAppointments/MyAppointments";
+import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         {
           path:'myAppointments',
           element:<MyAppointments></MyAppointments>
+        },
+        {
+          path:'allUser',
+          element:<AllUser></AllUser>
         }
       ]
     }

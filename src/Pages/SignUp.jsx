@@ -55,7 +55,7 @@ const SignUp = () => {
         const upazila = form.upazila.value
         const bloodGroup = form.bloodGroup.value
         const image = form.image.files[0]
-        const isActive = true
+        const status = 'Active'
 
         if (password !== confirmPass) {
             return setPassError('password not match!!')
@@ -79,7 +79,7 @@ const SignUp = () => {
             console.log(user)
             
             await updateUserProfile(name, image_url)
-            const userData = { name, email, district, upazila, bloodGroup, image:image_url, isActive }
+            const userData = { name, email, district, upazila, bloodGroup, image:image_url, status }
 
             mutateAsync(userData)
 
