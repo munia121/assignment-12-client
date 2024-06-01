@@ -4,6 +4,7 @@ import useAxiosCommon from "../../../hooks/useAxiosCommon";
 const Banner = () => {
 
     const axiosCommon = useAxiosCommon()
+    // eslint-disable-next-line no-unused-vars
     const { data: bannerData, isLoading, refetch } = useQuery({
         queryKey: ['bannerData'],
         queryFn: async () => {
@@ -31,7 +32,7 @@ const Banner = () => {
                         </div>
                         <p className="mb-5 mt-5 lg:w-[800px]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                        
-                        <button className="btn btn-primary font-bold text-lg">All Test</button>
+                        <button className="btn bg-sky-500 font-bold text-white text-lg">All Test</button>
                     </div>
                 </div>
             </div>

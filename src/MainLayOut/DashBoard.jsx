@@ -30,12 +30,12 @@ const DashBoard = () => {
                            
                             <li>
                                 <NavLink to={'/dashboard/allUser'}>
-                                    <FaUsers></FaUsers>
+                                    {/* <FaUsers></FaUsers> */}
                                     All Users</NavLink>
                             </li>
                             <li>
                                 <NavLink to={'/dashboard/allBanner'}>
-                                    <FaUsers></FaUsers>
+                                    
                                     All Banner</NavLink>
                             </li>
                         </>

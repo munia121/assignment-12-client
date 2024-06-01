@@ -1,7 +1,6 @@
 import Container from '../../../Component/Sheard/Container'
-
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { AiOutlineMenu } from 'react-icons/ai'
 
@@ -9,10 +8,10 @@ import { AiOutlineMenu } from 'react-icons/ai'
 const Navbar = () => {
     const { user, logOut } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
-    
+
 
     return (
-        <div className='fixed w-full bg-white z-10 shadow-sm'>
+        <div className='fixed w-full bg-white z-10  shadow-sm'>
             <div className='py-4 border-b-[1px]'>
                 <Container>
                     <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
@@ -35,8 +34,20 @@ const Navbar = () => {
                                     )}
                                 </div>
 
+                                <div>
+                                    <NavLink
+                                        to='/alltest'
+                                        
+                                        className={({ isActive }) =>
+                                            `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-blue-500  text-white rounded-lg' : 'text-blue-500 border border-blue-500 rounded-lg'
+                                            }`
+                                        }
+                                    >
+
+                                        <span className='mx-4 font-medium'>All Test</span>
+                                    </NavLink>
+                                </div>
                                 {/* Dropdown btn */}
-                                component
                                 <div
                                     onClick={() => setIsOpen(!isOpen)}
                                     className='p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
@@ -74,8 +85,8 @@ const Navbar = () => {
                                                     Logout
                                                 </div>
                                                 <div className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>
-                                                    
-                                                  <Link to={'/dashboard'}>Dashboard</Link>
+
+                                                    <Link to={'/dashboard'}>Dashboard</Link>
                                                 </div>
                                             </>
                                         ) : (

@@ -1,5 +1,6 @@
 import Promotions from "../../../Component/HomePageComponent/Promotions";
 import Personalized from "../../../Component/HomePageComponent/personalized/Personalized";
+// import Personalized from "../../../Component/HomePageComponent/personalized/Personalized";
 import Banner from "../Banner/Banner";
 
 const Home = () => {

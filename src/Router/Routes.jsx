@@ -8,6 +8,7 @@ import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
 import AllBanner from "../Pages/Dashboard/AllBanner/AllBanner";
 import Home from "../Pages/HomePage/Home/Home";
+import AllTest from "../Pages/AllTest/AllTest";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -24,7 +25,11 @@ export const router = createBrowserRouter([
         {
           path:'signup',
           element:<SignUp></SignUp>
-        }
+        },
+        {
+          path:'/alltest',
+          element:<AllTest></AllTest>
+        },
       ]
     },
     {
