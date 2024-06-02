@@ -9,6 +9,7 @@ import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
 import AllBanner from "../Pages/Dashboard/AllBanner/AllBanner";
 import Home from "../Pages/HomePage/Home/Home";
 import AllTest from "../Pages/AllTest/AllTest";
+import AddTest from "../Pages/AllTest/AddTest";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
         {
           path:'allBanner',
           element:<AllBanner></AllBanner>
+        },
+        {
+          path:'addTest',
+          element:<AddTest></AddTest>
         }
       ]
     }

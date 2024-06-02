@@ -27,6 +27,11 @@ const DashBoard = () => {
                                     
                                     Add Banner</NavLink>
                             </li>
+                            <li>
+                                <NavLink to={'/dashboard/addTest'}>
+                                    
+                                    Add a Test</NavLink>
+                            </li>
                            
                             <li>
                                 <NavLink to={'/dashboard/allUser'}>

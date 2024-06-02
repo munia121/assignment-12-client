@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 
@@ -9,6 +8,7 @@ const AllBanner = () => {
     const [banners, setBanners] = useState([]);
 
 
+    // eslint-disable-next-line no-unused-vars
     const { data, isLoading, refetch } = useQuery({
         queryKey: ['bannerData'],
         queryFn: async () => {
