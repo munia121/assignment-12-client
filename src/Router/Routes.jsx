@@ -11,6 +11,7 @@ import Home from "../Pages/HomePage/Home/Home";
 import AllTest from "../Pages/AllTest/AllTest";
 import AddTest from "../Pages/AllTest/AddTest";
 import TestDetails from "../Component/All-TestDetails/TestDetails";
+import AllTestTable from "../Component/All-TestDetails/AllTestTable";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -63,7 +64,8 @@ export const router = createBrowserRouter([
           element:<AddTest></AddTest>
         },
         {
-          path:''
+          path:'all-test',
+          element:<AllTestTable></AllTestTable>
         }
       ]
     }

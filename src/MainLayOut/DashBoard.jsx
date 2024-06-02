@@ -43,6 +43,11 @@ const DashBoard = () => {
                                     
                                     All Banner</NavLink>
                             </li>
+                            <li>
+                                <NavLink to={'/dashboard/all-test'}>
+                                    
+                                    All Test</NavLink>
+                            </li>
                         </>
                             :
                             <>
