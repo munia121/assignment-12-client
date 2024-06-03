@@ -52,18 +52,18 @@ const DashBoard = () => {
                             :
                             <>
                                 <li>
-                                    <NavLink to={'/dashboard/userHome'}>
+                                    <NavLink to={'/jdsf'}>
                                         <FaHome></FaHome>
                                         User Home</NavLink>
                                 </li>
                                
                                 <li>
-                                    <NavLink to={'/dashboard/review'}>
+                                    <NavLink to={'/dashboard/upcomingAppoint'}>
                                        
-                                    My Appointments</NavLink>
+                                    Upcoming Appointments</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/dashboard/paymentHistory'}>
+                                    <NavLink to={'/'}>
                                         
                                         Test Result</NavLink>
                                 </li>

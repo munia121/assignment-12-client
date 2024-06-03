@@ -3,7 +3,6 @@ import MainLayOut from "../MainLayOut/MainLayOut";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import DashBoard from "../MainLayOut/DashBoard";
-import MyAppointments from "../Pages/Dashboard/MYyAppointments/MyAppointments";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
 import AllBanner from "../Pages/Dashboard/AllBanner/AllBanner";
@@ -15,6 +14,7 @@ import AllTestTable from "../Component/All-TestDetails/AllTestTable";
 import UpdatePage from "../Component/All-TestDetails/UpdatePage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Payment from "../Pages/Payment/Payment";
+import UpcomingAppoint from "../Pages/UpcomingAppoint/UpcomingAppoint";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -53,8 +53,8 @@ export const router = createBrowserRouter([
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
-          path:'myAppointments',
-          element:<MyAppointments></MyAppointments>
+          path:'upcomingAppoint',
+          element:<UpcomingAppoint></UpcomingAppoint>
         },
         {
           path:'allUser',

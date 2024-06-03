@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
+// eslint-disable-next-line no-unused-vars
 const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
 
     const stripe = useStripe();
@@ -15,15 +16,6 @@ const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
     const { user } = useAuth()
     const now = new Date()
 
-    // useEffect(() => {
-    //     if (totalPrice > 0) {
-    //         axiosSecure.post('create-payment-intent', { price: totalPrice })
-    //             .then(res => {
-    //                 console.log(res.data.clientSecret)
-    //                 setClientSecret(res.data.clientSecret)
-    //             })
-    //     }
-    // }, [totalPrice])
     useEffect(() => {
         if (paymentData.price > 0) {
             axiosSecure.post('/create-payment-intent', { price: paymentData.price })
@@ -79,29 +71,29 @@ const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
 
 
                 // now save the payment in the database
-                const payment = {
+                const data = {
                     transactionId: paymentIntent.id,
                     email: user.email,
                     price: paymentData.price,
                     testName: paymentData.name,
-                    appointmentDate: new Date(),
+                    appointmentDate: new Date().toLocaleDateString(),
                     time:now.getMinutes()
                     
                 }
 
-                // const res = await axiosSecure.post('/payments', payment)
-                // console.log('payment save ', res.data)
-                // refetch();
-                // if (res.data?.paymentResult?.insertedId) {
-                //     Swal.fire({
-                //         position: "top-end",
-                //         icon: "success",
-                //         title: "Thank You ",
-                //         showConfirmButton: false,
-                //         timer: 1500
-                //     });
-                //     navigate('/dashboard/paymentHistory')
-                // }
+                const res = await axiosSecure.post('/booked-payment', data)
+                console.log('payment save ', res.data)
+                refetch();
+                if (res.data?.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Thank You for payment",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // navigate('/dashboard/paymentHistory')
+                }
             }
         }
 

@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
 import BookingModal from "../Modal/BookingModal";
 import { useState } from "react";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { loadStripe } from "@stripe/stripe-js";
 
 
@@ -31,21 +30,21 @@ const TestDetails = () => {
     // ***************
     const stripePromise = loadStripe(import.meta.env.VITE_Payment_Pk)
 
-const Payment = () => {
-    const {id} = useParams()
+// const Payment = () => {
+//     const {id} = useParams()
 
-    const axiosSecure = useAxiosSecure()
-    // eslint-disable-next-line no-unused-vars
-    const { data: paymentData = [], isLoading, refetch } = useQuery({
-        queryKey: ['payment'],
-        queryFn: async () => {
-            const { data } = await axiosSecure.get(`/payment/${id}`)
-            // console.log(data)
-            return data
-        }
-    })
+//     const axiosSecure = useAxiosSecure()
+//     // eslint-disable-next-line no-unused-vars
+//     const { data: paymentData = [], isLoading, refetch } = useQuery({
+//         queryKey: ['payment'],
+//         queryFn: async () => {
+//             const { data } = await axiosSecure.get(`/payment/${id}`)
+//             // console.log(data)
+//             return data
+//         }
+//     })
 
-}
+// }
     // console.log(paymentData)
 
 

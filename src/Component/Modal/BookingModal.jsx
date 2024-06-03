@@ -7,7 +7,6 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/react'
-import { format } from 'date-fns'
 import { Fragment } from 'react'
 import CheckoutForm from '../../Pages/Payment/CheckoutForm'
 import { Elements } from '@stripe/react-stripe-js'
