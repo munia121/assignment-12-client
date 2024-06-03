@@ -2,6 +2,7 @@
 
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line no-unused-vars
 const AllTestCard = ({ data, refetch }) => {
     // eslint-disable-next-line no-unused-vars
     const { image, name, details, date, slots, price, _id } = data

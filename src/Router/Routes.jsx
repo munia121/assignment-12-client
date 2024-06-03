@@ -12,10 +12,14 @@ import AllTest from "../Pages/AllTest/AllTest";
 import AddTest from "../Pages/AllTest/AddTest";
 import TestDetails from "../Component/All-TestDetails/TestDetails";
 import AllTestTable from "../Component/All-TestDetails/AllTestTable";
+import UpdatePage from "../Component/All-TestDetails/UpdatePage";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Payment from "../Pages/Payment/Payment";
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayOut></MainLayOut>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
@@ -36,12 +40,17 @@ export const router = createBrowserRouter([
         {
           path:'/details/:id',
           element:<TestDetails></TestDetails>
+        },
+        {
+          path:'/payment/:id',
+          element:<Payment></Payment>
         }
       ]
     },
     {
       path:'/dashboard',
       element:<DashBoard></DashBoard>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:'myAppointments',
@@ -66,6 +75,10 @@ export const router = createBrowserRouter([
         {
           path:'all-test',
           element:<AllTestTable></AllTestTable>
+        },
+        {
+          path:'updateTest/:id',
+          element:<UpdatePage></UpdatePage>
         }
       ]
     }

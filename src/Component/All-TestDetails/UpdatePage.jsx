@@ -1,31 +1,43 @@
-// eslint-disable-next-line no-unused-vars
-import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-
-const AddTest = () => {
-    const [startDate, setStartDate] = useState(new Date());
-    const axiosSecure = useAxiosSecure()
+const UpdatePage = () => {
+    const { id } = useParams()
     const navigate = useNavigate()
+    const [startDate, setStartDate] = useState(new Date());
+
+    const axiosSecure = useAxiosSecure()
+    // eslint-disable-next-line no-unused-vars
+    const { data: testData = [], isLoading, refetch } = useQuery({
+        queryKey: ['all-tests', id],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get(`/all-tests/${id}`)
+            // console.log(data)
+            return data
+        }
+    })
+    const { name, details, price, slots, date, image } = testData
+    console.log(testData)
+
 
     const { mutateAsync } = useMutation({
-        mutationFn: async (testData) => {
-            const { data } = await axiosSecure.post(`/allTest`, testData)
+        mutationFn: async ( allTest) => {
+            const { data } = await axiosSecure.put(`/allTests/${id}`, allTest)
             return data
         },
-        onSuccess: () => {
-            console.log('data saved successfully')
-            toast.success('Test data added successfully')
+        onSuccess: async (data) => {
+            console.log(data)
+            refetch()
+            toast.success('Update Successfully')
             navigate('/dashboard/all-test')
-
         }
-
     })
+
 
     const handlerSubmit = (event) => {
         event.preventDefault()
@@ -37,10 +49,9 @@ const AddTest = () => {
         const slots = parseInt(form.slots.value);
         const date = (startDate).toLocaleDateString();
         const image = form.image.value;
-        const report = 'Pending'
-        
 
-        const testData = { name, details,price, slots, date, image,report }
+
+        const testData = { name, details, price, slots, date, image }
         console.log(testData)
 
         try {
@@ -56,8 +67,7 @@ const AddTest = () => {
 
 
 
-
-
+    if (isLoading) return <p>Loading...</p>
     return (
         <div>
             <div className="mx-auto">
@@ -65,7 +75,7 @@ const AddTest = () => {
                     backgroundImage: `url()`,
 
                 }}>
-                    <h2 className="text-3xl font-extrabold text-center"> Add A test</h2>
+                    <h2 className="text-3xl font-extrabold text-center"> Update A test</h2>
 
                     <form onSubmit={handlerSubmit} className=" p-5 lg:w-[800px] mx-auto border-[#f29c94] ">
                         {/* form name and quanity row */}
@@ -75,7 +85,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Name</span>
                                     </div>
-                                    <input type="text" name="name" placeholder="Test name" className="input border-blue-400 input-bordered w-full " />
+                                    <input defaultValue={name} type="text" name="name" placeholder="Test name" className="input border-blue-400 input-bordered w-full " />
                                 </label>
                             </div>
                             <div className=" ">
@@ -84,10 +94,9 @@ const AddTest = () => {
                                         <div className="label">
                                             <span className="label-text font-bold">Details </span>
                                         </div>
-                                        <input type="text" name="details" placeholder="Details here" className="input border-blue-400 input-bordered w-full " />
+                                        <input defaultValue={details} type="text" name="details" placeholder="Details here" className="input border-blue-400 input-bordered w-full " />
                                     </label>
-                                    {/* Display selected option */}
-                                    {/* <p>You selected: {selectedOption}</p> */}
+
                                 </div>
                             </div>
                         </div>
@@ -98,7 +107,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Price</span>
                                     </div>
-                                    <input type="text" name="price" placeholder="Price" className="input border-blue-400 input-bordered w-full " />
+                                    <input defaultValue={price} type="text" name="price" placeholder="Price" className="input border-blue-400 input-bordered w-full " />
                                 </label>
                             </div>
                             <div className="">
@@ -106,7 +115,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Slots</span>
                                     </div>
-                                    <input type="text" name="slots" placeholder="slots here" className="input border-blue-400 input-bordered w-full " />
+                                    <input defaultValue={slots} type="text" name="slots" placeholder="slots here" className="input border-blue-400 input-bordered w-full " />
                                 </label>
                             </div>
                         </div>
@@ -117,8 +126,8 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold"> Date</span>
                                     </div>
-                                    <DatePicker className="border w-full border-blue-400 p-3 rounded-lg" selected={startDate} minDate={new Date()} endDate={new Date()} onChange={(date) => setStartDate(date)} />
-                                    {/* <input type="text" name="date" placeholder="date" className="input border-[#f29c94] input-bordered w-full " /> */}
+                                    <DatePicker className="border w-full border-blue-400 p-3 rounded-lg" selected={startDate} defaultValue={date} minDate={new Date()} endDate={new Date()} onChange={(date) => setStartDate(date)} />
+
                                 </label>
                             </div>
                             <div className="">
@@ -126,7 +135,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Image URL</span>
                                     </div>
-                                    <input type="text" name="image" placeholder="Image URL" className="input border-blue-400 input-bordered w-full " />
+                                    <input defaultValue={image} type="text" name="image" placeholder="Image URL" className="input border-blue-400 input-bordered w-full " />
                                 </label>
                             </div>
                         </div>
@@ -144,4 +153,4 @@ const AddTest = () => {
     );
 };
 
-export default AddTest;
+export default UpdatePage;
