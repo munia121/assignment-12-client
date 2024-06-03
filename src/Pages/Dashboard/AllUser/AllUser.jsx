@@ -57,7 +57,7 @@ const AllUser = () => {
                         <tbody>
                             {/* row 1 */}
                             {
-                                users.map((user, idx) => <tr key={user._id}>
+                                users?.map((user, idx) => <tr key={user._id}>
                                     <th>{idx + 1}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>

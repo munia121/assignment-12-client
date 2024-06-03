@@ -15,6 +15,8 @@ import UpdatePage from "../Component/All-TestDetails/UpdatePage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Payment from "../Pages/Payment/Payment";
 import UpcomingAppoint from "../Pages/UpcomingAppoint/UpcomingAppoint";
+import Profile from "../Pages/Profile/Profile";
+import UpdateProfile from "../Pages/Profile/UpdateProfile";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -59,6 +61,14 @@ export const router = createBrowserRouter([
         {
           path:'allUser',
           element:<AllUser></AllUser>
+        },
+        {
+          path:'updateProfile/:email',
+          element:<UpdateProfile></UpdateProfile>
+        },
+        {
+          path:'profile',
+          element:<Profile></Profile>
         },
         {
           path:'addBanner',

@@ -7,15 +7,15 @@ import { loadStripe } from "@stripe/stripe-js";
 
 
 const TestDetails = () => {
-    
+
     const [isOpen, setIsOpen] = useState(false)
     const { id } = useParams()
     const axiosCommon = useAxiosCommon()
 
     const closeModal = () => {
         setIsOpen(false)
-      }
-    
+    }
+
 
     const { data: data = {}, isLoading, refetch } = useQuery({
         queryKey: ['details', id],
@@ -30,21 +30,21 @@ const TestDetails = () => {
     // ***************
     const stripePromise = loadStripe(import.meta.env.VITE_Payment_Pk)
 
-// const Payment = () => {
-//     const {id} = useParams()
+    // const Payment = () => {
+    //     const {id} = useParams()
 
-//     const axiosSecure = useAxiosSecure()
-//     // eslint-disable-next-line no-unused-vars
-//     const { data: paymentData = [], isLoading, refetch } = useQuery({
-//         queryKey: ['payment'],
-//         queryFn: async () => {
-//             const { data } = await axiosSecure.get(`/payment/${id}`)
-//             // console.log(data)
-//             return data
-//         }
-//     })
+    //     const axiosSecure = useAxiosSecure()
+    //     // eslint-disable-next-line no-unused-vars
+    //     const { data: paymentData = [], isLoading, refetch } = useQuery({
+    //         queryKey: ['payment'],
+    //         queryFn: async () => {
+    //             const { data } = await axiosSecure.get(`/payment/${id}`)
+    //             // console.log(data)
+    //             return data
+    //         }
+    //     })
 
-// }
+    // }
     // console.log(paymentData)
 
 
@@ -74,11 +74,10 @@ const TestDetails = () => {
                         </a>
                         <p className="leading-snug ">{data.details}</p>
                         <p className="leading-snug font-bold">Price:  ${data.price}</p>
-                        <p className="leading-snug font-bold">Slots: {data.slots}</p>
                         <div className="flex justify-between items-center">
-                            <p className="font-bold ">Report: <span className="text-sky-500">{data.report}</span></p>
+                            <p className="leading-snug font-bold">Slots: {data.slots}</p>
                             <Link >
-                                <button onClick={() => setIsOpen(true)} className="btn bg-blue-500 text-white">Book Now</button>
+                                <button disabled={data.slots === 0} onClick={() => setIsOpen(true)} className="btn bg-blue-500 text-white">Book Now</button>
                             </Link>
                         </div>
                         <BookingModal isOpen={isOpen} closeModal={closeModal} stripePromise={stripePromise} paymentData={data} refetch={refetch}></BookingModal>

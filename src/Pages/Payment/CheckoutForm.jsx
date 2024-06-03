@@ -77,14 +77,19 @@ const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
                     price: paymentData.price,
                     testName: paymentData.name,
                     appointmentDate: new Date().toLocaleDateString(),
-                    time:now.getMinutes()
+                    time:now.getMinutes(),
+                    report:'Pending'
                     
                 }
 
                 const res = await axiosSecure.post('/booked-payment', data)
                 console.log('payment save ', res.data)
+                if(res.data.message == 'payment success'){
+                    await axiosSecure.patch(`/reduceQuantity/${paymentData._id}`)
+                }
+                
                 refetch();
-                if (res.data?.insertedId) {
+                if (res?.data.result.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
