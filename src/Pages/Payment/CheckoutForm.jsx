@@ -79,7 +79,6 @@ console.log('paymentdata',paymentData)
                     appointmentDate: new Date().toISOString(),
                     time:now.getTime(),
                     report:'Pending',
-                    count:0
                     
                 }
 

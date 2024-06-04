@@ -39,10 +39,9 @@ const AllUser = () => {
             <div>
                 <div className="flex justify-evenly">
                     <h2 className="text-3xl"> All Users</h2>
-                    <h2 className="text-3xl"> Total Users {users.length}</h2>
                 </div>
                 <div className="overflow-x-auto ">
-                    <table className="table w-full">
+                    <table className="table w-full border mt-10">
                         {/* head */}
                         <thead>
                             <tr>

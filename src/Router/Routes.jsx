@@ -17,6 +17,7 @@ import Payment from "../Pages/Payment/Payment";
 import UpcomingAppoint from "../Pages/UpcomingAppoint/UpcomingAppoint";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
+import Reservation from "../Pages/Dashboard/Reservation";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
         {
           path:'updateTest/:id',
           element:<UpdatePage></UpdatePage>
+        },
+        {
+          path:'reservation',
+          element:<Reservation></Reservation>
         }
       ]
     }

@@ -49,6 +49,11 @@ const DashBoard = () => {
 
                                         All Test</NavLink>
                                 </li>
+                                <li>
+                                    <NavLink to={'/dashboard/reservation'}>
+
+                                        Reservation</NavLink>
+                                </li>
                             </>
                                 :
                                 <>

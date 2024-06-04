@@ -119,7 +119,7 @@ const SignUp = () => {
                                     type='text'
                                     name='name'
                                     placeholder='Enter Your Name Here'
-                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-sky-500 bg-gray-200 text-gray-900'
                                     data-temp-mail-org='0'
                                 />
                             </div>
@@ -133,7 +133,7 @@ const SignUp = () => {
                                     name='email'
                                     required
                                     placeholder='Enter Your Email Here'
-                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-sky-500 bg-gray-200 text-gray-900'
                                     data-temp-mail-org='0'
                                 />
                             </div>
@@ -157,7 +157,7 @@ const SignUp = () => {
                                 </label>
                                 <select
                                     required
-                                    className=' border w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                    className=' border w-full px-4 py-3 border-sky-300 focus:outline-sky-500 rounded-md'
                                     name='bloodGroup'
                                 >
                                     <option value='A+'>A+</option>
@@ -180,7 +180,7 @@ const SignUp = () => {
                                 </label>
                                 <select
                                     required
-                                    className=' border w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                    className=' border w-full px-4 py-3 border-sky-300 focus:outline-sky-500 rounded-md'
                                     name='district'
                                 >
                                     <option value="select">select</option>
@@ -198,7 +198,7 @@ const SignUp = () => {
                                 </label>
                                 <select
                                     required
-                                    className=' border w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                                    className=' border w-full px-4 py-3 border-sky-300 focus:outline-sky-500 rounded-md'
                                     name='upazila'
                                 >   <option value="select">select</option>
                                     {upazilatData.map(data => (
@@ -229,7 +229,7 @@ const SignUp = () => {
                                     name='password'
                                     required
                                     placeholder='must be 6 character'
-                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-sky-500 bg-gray-200 text-gray-900'
                                 />
                             </div>
                             <div>
@@ -245,7 +245,7 @@ const SignUp = () => {
 
                                     required
                                     placeholder='*******'
-                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-sky-500 bg-gray-200 text-gray-900'
                                 />
                                 <p>{passError}</p>
                             </div>
@@ -255,7 +255,7 @@ const SignUp = () => {
                     <div>
                         <button
                             type='submit'
-                            className='bg-rose-500 w-full rounded-md py-3 text-white'
+                            className='bg-sky-600 w-full rounded-md py-3 text-white'
                         >
                             Continue
                         </button>
@@ -277,7 +277,7 @@ const SignUp = () => {
                     Already have an account?{' '}
                     <Link
                         to='/login'
-                        className='hover:underline hover:text-rose-500 text-gray-600'
+                        className='hover:underline hover:text-sky-400 text-gray-600'
                     >
                         Login
                     </Link>

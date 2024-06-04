@@ -65,7 +65,7 @@ if(isLoading) return <p>Loading.....</p>
 
     return (
         <div>
-            <div>
+            <div className="border">
                 <div className="flex justify-evenly">
                     <h2 className="text-3xl"> All Test</h2>
 
@@ -73,7 +73,7 @@ if(isLoading) return <p>Loading.....</p>
                 <div className="overflow-x-auto mt-20">
                     <table className="table w-full">
                         {/* head */}
-                        <thead className="font-bold text-sky-600 ">
+                        <thead className="font-bold text-sky-600 border">
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>

@@ -40,7 +40,7 @@ const AllTest = () => {
         <div className=" lg:w-[1600px] mx-auto">
             <div className="">
                 <form onSubmit={handleSearch} className="flex justify-center">
-                    <input type="text" name="search" placeholder="search date" className="input input-bordered input-info w-full max-w-xs" />
+                    <input type="text" name="search" placeholder="search by date" className="input input-bordered input-info w-full max-w-xs" />
                     <input type="submit" value="Search" className="btn" />
                     {/* <button type="submit" className="btn mb-10">
                         <FaSearch></FaSearch>

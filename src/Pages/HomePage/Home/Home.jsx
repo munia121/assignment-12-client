@@ -1,4 +1,5 @@
 import Promotions from "../../../Component/HomePageComponent/Promotions";
+import TestFeatured from "../../../Component/HomePageComponent/TestFeatured";
 import Personalized from "../../../Component/HomePageComponent/personalized/Personalized";
 // import Personalized from "../../../Component/HomePageComponent/personalized/Personalized";
 import Banner from "../Banner/Banner";
@@ -11,6 +12,7 @@ const Home = () => {
                 <Promotions></Promotions>
             </div>
             <Personalized></Personalized>
+            <TestFeatured></TestFeatured>
         </div>
     );
 };
