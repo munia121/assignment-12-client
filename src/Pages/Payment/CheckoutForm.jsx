@@ -15,7 +15,7 @@ const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
     const [transactionId, setTransactionId] = useState('')
     const { user } = useAuth()
     const now = new Date()
-
+console.log('paymentdata',paymentData)
     useEffect(() => {
         if (paymentData.price > 0) {
             axiosSecure.post('/create-payment-intent', { price: paymentData.price })
@@ -76,9 +76,10 @@ const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
                     email: user.email,
                     price: paymentData.price,
                     testName: paymentData.name,
-                    appointmentDate: new Date().toLocaleDateString(),
-                    time:now.getMinutes(),
-                    report:'Pending'
+                    appointmentDate: new Date().toISOString(),
+                    time:now.getTime(),
+                    report:'Pending',
+                    count:0
                     
                 }
 
@@ -86,6 +87,9 @@ const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
                 console.log('payment save ', res.data)
                 if(res.data.message == 'payment success'){
                     await axiosSecure.patch(`/reduceQuantity/${paymentData._id}`)
+                }
+                if(res.data.message == 'payment success'){
+                    await axiosSecure.patch(`/increment/${paymentData._id}`)
                 }
                 
                 refetch();

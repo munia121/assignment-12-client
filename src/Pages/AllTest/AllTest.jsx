@@ -4,15 +4,20 @@ import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 const AllTest = () => {
-    
+
     const [allData, setAllData] = useState([])
     const [search, setSearch] = useState('')
+    const today = new Date()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-test?search=${search}`)
+        fetch(`http://localhost:5000/all-test?search=${search}&date=${allData?.date}`)
             .then(res => res.json())
             .then(data => setAllData(data))
-    }, [search])
+    }, [search, allData.date])
+
+
+    // const filterData = allData.filter(test => new Date(test.date) >= today)
+    // const filterData = allData.filter(test => new Date(test.date) >= today);
 
 
 

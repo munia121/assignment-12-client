@@ -54,20 +54,20 @@ const Profile = () => {
     // })
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        console.log('event')
-        const form = e.target
-        const name = form.name.value
-        // const image = form.image.value
-        const profileData = { name }
-        console.log('profile data', profileData)
-        const { data } = await axiosSecure.put(`/users/${userData?.email}`, profileData)
-        console.log(data)
-        
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
+    //     console.log('event')
+    //     const form = e.target
+    //     const name = form.name.value
+    //     // const image = form.image.value
+    //     const profileData = { name }
+    //     console.log('profile data', profileData)
+    //     const { data } = await axiosSecure.put(`/users/${userData?.email}`, profileData)
+    //     console.log(data)
 
 
-    }
+
+    // }
 
 
 
@@ -103,9 +103,12 @@ const Profile = () => {
                                 Email :
                                 <span className='font-bold text-black '>{userData?.email}</span>
                             </p>
+                            <Link to={`/dashboard/updateProfile/${userData?.email}`}>
+                                <button className='font-bold bg-sky-600  text-white px-4 py-2 rounded-lg'>Update Your Profile</button>
+                            </Link>
 
                             {/* update modal */}
-                            <div>
+                            {/* <div>
 
                                 <button className='bg-sky-600 px-10 font-bold  py-2 rounded-lg text-white cursor-pointer hover:bg-sky-300 block mb-1' onClick={() => document.getElementById('my_modal_1').showModal()}>Update Your Profile</button>
                                 <dialog id="my_modal_1" className="modal">
@@ -135,13 +138,13 @@ const Profile = () => {
                                         </form>
                                         <div className="modal-action">
                                             <form method="dialog">
-                                                {/* if there is a button in form, it will close the modal */}
+                                               
                                                 <button type='submit' className="px-5 py-2 rounded bg-sky-600 text-white">Close</button>
                                             </form>
                                         </div>
                                     </div>
                                 </dialog>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
