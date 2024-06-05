@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../../hooks/useAxiosCommon";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
 
@@ -20,7 +21,7 @@ const Banner = () => {
     if (isLoading) return <p>Loading...</p>
     return (
         <div>
-            <div className="hero lg:h-[700px]" style={{ backgroundImage:`url(${bannerData.photo})` }}>
+            <div className="hero lg:h-[700px]" style={{ backgroundImage: `url(${bannerData.photo})` }}>
                 <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="">
@@ -31,8 +32,10 @@ const Banner = () => {
                             <p className="font-bold">Discount Rate : <span className="text-sky-600">{bannerData.couponRate} %</span></p>
                         </div>
                         <p className="mb-5 mt-5 lg:w-[800px]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                       
-                        <button className="btn bg-sky-500 font-bold text-white text-lg">All Test</button>
+
+                        <Link to={'/allTest'}>
+                            <button className="btn bg-sky-500 font-bold text-white text-lg">All Test</button>
+                        </Link>
                     </div>
                 </div>
             </div>

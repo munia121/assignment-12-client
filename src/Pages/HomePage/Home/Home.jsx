@@ -1,3 +1,4 @@
+
 import Promotions from "../../../Component/HomePageComponent/Promotions";
 import TestFeatured from "../../../Component/HomePageComponent/TestFeatured";
 import Personalized from "../../../Component/HomePageComponent/personalized/Personalized";
@@ -5,6 +6,9 @@ import Personalized from "../../../Component/HomePageComponent/personalized/Pers
 import Banner from "../Banner/Banner";
 
 const Home = () => {
+
+
+   
     return (
         <div className='py-12 '>
             <Banner></Banner>

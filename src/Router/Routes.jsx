@@ -18,6 +18,7 @@ import UpcomingAppoint from "../Pages/UpcomingAppoint/UpcomingAppoint";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
 import Reservation from "../Pages/Dashboard/Reservation";
+import PrivateRoute from "./PrivetRoute";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -42,6 +43,7 @@ export const router = createBrowserRouter([
         },
         {
           path:'/details/:id',
+          // element:<PrivateRoute><TestDetails></TestDetails></PrivateRoute>,
           element:<TestDetails></TestDetails>
         },
         {
@@ -52,7 +54,7 @@ export const router = createBrowserRouter([
     },
     {
       path:'/dashboard',
-      element:<DashBoard></DashBoard>,
+      element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {

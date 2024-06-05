@@ -5,8 +5,21 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
+
+
 // eslint-disable-next-line no-unused-vars
-const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
+const CheckoutForm = ({ paymentData, refetch, closeModal }) => {
+
+    const [timeString, setTimeString] = useState('');
+
+    useEffect(() => {
+        const now = new Date();
+        const timestamp = now.getTime();
+        const date = new Date(timestamp);
+        const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+        const formattedTime = date.toLocaleTimeString('en-US', options);
+        setTimeString(formattedTime);
+    }, []);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -14,8 +27,7 @@ const CheckoutForm = ({ paymentData, refetch , closeModal}) => {
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('')
     const { user } = useAuth()
-    const now = new Date()
-console.log('paymentdata',paymentData)
+    console.log('paymentdata', paymentData)
     useEffect(() => {
         if (paymentData.price > 0) {
             axiosSecure.post('/create-payment-intent', { price: paymentData.price })
@@ -25,6 +37,8 @@ console.log('paymentdata',paymentData)
                 })
         }
     }, [paymentData.price])
+
+
 
 
     const handleSubmit = async (e) => {
@@ -77,20 +91,20 @@ console.log('paymentdata',paymentData)
                     price: paymentData.price,
                     testName: paymentData.name,
                     appointmentDate: new Date().toISOString(),
-                    time:now.getTime(),
-                    report:'Pending',
-                    
+                    time: timeString,
+                    report: 'Pending',
+
                 }
 
                 const res = await axiosSecure.post('/booked-payment', data)
                 console.log('payment save ', res.data)
-                if(res.data.message == 'payment success'){
+                if (res.data.message == 'payment success') {
                     await axiosSecure.patch(`/reduceQuantity/${paymentData._id}`)
                 }
-                if(res.data.message == 'payment success'){
+                if (res.data.message == 'payment success') {
                     await axiosSecure.patch(`/increment/${paymentData._id}`)
                 }
-                
+
                 refetch();
                 if (res?.data.result.insertedId) {
                     Swal.fire({
@@ -132,7 +146,7 @@ console.log('paymentdata',paymentData)
                     {
                         transactionId && < p className="text-green-600 "> Your Transaction id: {transactionId}</p>
                     }
-                    <button className="border font-bold px-6 py-3 rounded-lg bg-blue-500 text-white flex justify-center w-full mt-4" type="submit" disabled={!stripe ||     !clientSecret}>
+                    <button className="border font-bold px-6 py-3 rounded-lg bg-blue-500 text-white flex justify-center w-full mt-4" type="submit" disabled={!stripe || !clientSecret}>
                         Pay Now
                     </button>
                 </div>

@@ -110,7 +110,7 @@ const SignUp = () => {
                     className='space-y-6 ng-untouched ng-pristine ng-valid'
                 >
                     <div className='space-y-4'>
-                        <div className='flex gap-5'>
+                        <div className='lg:flex gap-5'>
                             <div>
                                 <label htmlFor='email' className='block mb-2 text-sm'>
                                     Name
@@ -138,8 +138,8 @@ const SignUp = () => {
                                 />
                             </div>
                         </div>
-                        <div className='flex'>
-                            <div className='flex-1'>
+                        <div className='md:flex'>
+                            <div className=' w-full'>
                                 <label htmlFor='image' className='block mb-2 text-sm'>
                                     Select Image:
                                 </label>
@@ -173,7 +173,7 @@ const SignUp = () => {
                             </div>
                         </div>
                         {/* ******************** */}
-                        <div className='flex gap-5'>
+                        <div className='md:flex gap-5'>
                             <div className='w-full '>
                                 <label htmlFor='district' className='block text-gray-600'>
                                     District
@@ -216,9 +216,9 @@ const SignUp = () => {
 
 
 
-                        <div className='flex gap-5'>
+                        <div className='md:flex gap-5'>
                             <div>
-                                <div className='flex justify-between'>
+                                <div className='mg:flex justify-between'>
                                     <label htmlFor='password' className='text-sm mb-2'>
                                         Password
                                     </label>
@@ -233,7 +233,7 @@ const SignUp = () => {
                                 />
                             </div>
                             <div>
-                                <div className='flex justify-between'>
+                                <div className='mg:flex justify-between'>
                                     <label htmlFor='confirmPass' className='text-sm mb-2'>
                                         Confirm Password
                                     </label>

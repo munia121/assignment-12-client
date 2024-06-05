@@ -8,18 +8,19 @@ import Swal from "sweetalert2";
 const UpcomingAppoint = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
+    
 
 
     // eslint-disable-next-line no-unused-vars
-    const { data: upcomingData = [], isLoading, refetch } = useQuery({
-        queryKey: ['appoint'],
+    const { data: upcomingData = {}, isLoading, refetch } = useQuery({
+        queryKey: ['appoint', user?.email],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/appoint/${user.email}`)
             // console.log(data)
             return data
         }
     })
-    console.log(upcomingData)
+    console.log(upcomingData.name)
 
 
     const handleDelete = (data) => {
@@ -86,11 +87,12 @@ const UpcomingAppoint = () => {
 
                                     <td>
                                         {data.appointmentDate}
+                                        
                                     </td>
                                    
                                    
                                     <td>
-                                        {data.time} Minutes
+                                        {data.time} 
                                     </td>
                                     <td>
                                         {data.report}
