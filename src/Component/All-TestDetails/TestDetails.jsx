@@ -4,6 +4,8 @@ import useAxiosCommon from "../../hooks/useAxiosCommon";
 import BookingModal from "../Modal/BookingModal";
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 
 const TestDetails = () => {
@@ -11,9 +13,29 @@ const TestDetails = () => {
     const [isOpen, setIsOpen] = useState(false)
     const { id } = useParams()
     const axiosCommon = useAxiosCommon()
+    const {user} = useAuth()
+
+    const { data: userData = [],  } = useQuery({
+        queryKey: ['user', user?.email],
+        queryFn: async () => {
+            const res = await axiosCommon.get(`/user/${user?.email}`)
+            return res.data
+        }
+    })
+    console.log(userData)
 
     const closeModal = () => {
-        setIsOpen(false)
+        setIsOpen(false)        
+    }
+
+    const handleStatus = () =>{
+        if(userData.status === 'Blocked'){
+            setIsOpen(false)
+            toast.error('You are Blocked')
+        }
+        else{
+            setIsOpen(true)
+        }
     }
 
 
@@ -50,7 +72,6 @@ const TestDetails = () => {
 
 
 
-
     if (isLoading) return <p>Loading....</p>
 
     return (
@@ -77,7 +98,7 @@ const TestDetails = () => {
                         <div className="flex justify-between items-center">
                             <p className="leading-snug font-bold">Slots: {data.slots}</p>
                             <Link >
-                                <button disabled={data.slots === 0} onClick={() => setIsOpen(true)} className="btn bg-blue-500 text-white">Book Now</button>
+                                <button disabled={data.slots === 0} onClick={handleStatus} className="btn bg-blue-500 text-white">Book Now</button>
                             </Link>
                         </div>
                         <BookingModal isOpen={isOpen} closeModal={closeModal} stripePromise={stripePromise} paymentData={data} refetch={refetch}></BookingModal>

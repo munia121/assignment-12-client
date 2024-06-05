@@ -1,13 +1,17 @@
-import { FaEnvelope, FaHome } from 'react-icons/fa';
-import { FaPersonRifle, } from 'react-icons/fa6';
+
+
 import { NavLink, Outlet } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 import { CgProfile } from 'react-icons/cg';
+import { FaHome } from 'react-icons/fa';
+
+
+
 
 const DashBoard = () => {
 
     const [isAdmin] = useAdmin()
-    // const isAdmin = true
+   
 
 
     return (
@@ -56,7 +60,7 @@ const DashBoard = () => {
                                 </li>
                             </>
                                 :
-                                <>
+                                 <> 
                                     <li>
                                         <NavLink to={'/jdsf'}>
                                             <FaHome></FaHome>
@@ -73,7 +77,7 @@ const DashBoard = () => {
 
                                             Test Result</NavLink>
                                     </li>
-                                   
+
                                 </>
                         }
 
@@ -93,9 +97,9 @@ const DashBoard = () => {
                                 <FaPersonRifle></FaPersonRifle>
                                 My Profile</NavLink>
                         </li> */}
-                           {!isAdmin ? <li>
+                            {!isAdmin ? <li>
                                 <NavLink to={'profile'}>
-                                <CgProfile className='text-xl' />
+                                    <CgProfile className='text-xl' />
                                     My Profile</NavLink>
                             </li> : ''}
                         </ul>

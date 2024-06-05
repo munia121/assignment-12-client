@@ -34,6 +34,17 @@ const AllUser = () => {
     }
 
 
+    const handleStatus = (user) => {
+        axiosSecure.patch(`/user-status/${user._id}`)
+            .then(res => {
+                console.log(res.data)
+                refetch()
+               
+            })
+    }
+
+
+
     return (
         <div>
             <div>
@@ -69,7 +80,7 @@ const AllUser = () => {
                                             </button>}
                                     </td>
                                     <td>
-                                        <button className="btn">
+                                        <button onClick={()=>handleStatus(user)} className="btn">
                                             {user.status}
                                         </button>
                                     </td>

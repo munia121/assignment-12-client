@@ -3,11 +3,33 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { AiOutlineMenu } from 'react-icons/ai'
+import { useQuery } from '@tanstack/react-query'
+import useAxiosCommon from '../../../hooks/useAxiosCommon'
+import toast from 'react-hot-toast'
 
 
 const Navbar = () => {
     const { user, logOut } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
+
+    const axiosCommon = useAxiosCommon()
+    // const isAdmin = true
+
+
+    const { data: userData = [], } = useQuery({
+        queryKey: ['user', user?.email],
+        queryFn: async () => {
+            const res = await axiosCommon.get(`/user/${user?.email}`)
+            return res.data
+        }
+    })
+    console.log(userData)
+
+    const handleStatus = () =>{
+        if(userData.status === 'Blocked'){
+            toast.error('Sorry You are Blocked !!!')
+        }
+    }
 
 
     return (
@@ -37,7 +59,7 @@ const Navbar = () => {
                                 <div>
                                     <NavLink
                                         to='/alltest'
-                                        
+
                                         className={({ isActive }) =>
                                             `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-blue-500  text-white rounded-lg' : 'text-blue-500 border border-blue-500 rounded-lg'
                                             }`
@@ -86,7 +108,9 @@ const Navbar = () => {
                                                 </div>
                                                 <div className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'>
 
-                                                    <Link to={'/dashboard'}>Dashboard</Link>
+                                                    {
+                                                        userData.status === 'Active' ? <Link to={'/dashboard'}>Dashboard</Link> : <button onClick={handleStatus}>Dashboard</button>
+                                                    }
                                                 </div>
                                             </>
                                         ) : (
