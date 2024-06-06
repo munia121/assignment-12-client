@@ -88,11 +88,13 @@ const CheckoutForm = ({ paymentData, refetch, closeModal }) => {
                 const data = {
                     transactionId: paymentIntent.id,
                     email: user.email,
+                    name: user?.displayName,
                     price: paymentData.price,
                     testName: paymentData.name,
-                    appointmentDate: new Date().toISOString(),
+                    appointmentDate: new Date().toLocaleDateString(),
                     time: timeString,
                     report: 'Pending',
+                    userId:paymentData._id
 
                 }
 

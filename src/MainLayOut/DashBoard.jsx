@@ -11,7 +11,7 @@ import { FaHome } from 'react-icons/fa';
 const DashBoard = () => {
 
     const [isAdmin] = useAdmin()
-   
+
 
 
     return (
@@ -23,9 +23,14 @@ const DashBoard = () => {
                         {
                             isAdmin ? <>
                                 <li>
-                                    <NavLink to={'/dashboard/adminHome'}>
+                                    <NavLink end to={'/dashboard'}>
                                         <FaHome></FaHome>
                                         Admin Home</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to={'/dashboard/statistic'}>
+                                        <FaHome></FaHome>
+                                        Statistic</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/dashboard/addBanner'}>
@@ -60,9 +65,11 @@ const DashBoard = () => {
                                 </li>
                             </>
                                 :
-                                 <> 
+                                <>
+
+
                                     <li>
-                                        <NavLink to={'/jdsf'}>
+                                        <NavLink end to={'/dashboard'}>
                                             <FaHome></FaHome>
                                             User Home</NavLink>
                                     </li>
@@ -73,7 +80,7 @@ const DashBoard = () => {
                                             Upcoming Appointments</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to={'/'}>
+                                        <NavLink to={'/dashboard/testresult'}>
 
                                             Test Result</NavLink>
                                     </li>

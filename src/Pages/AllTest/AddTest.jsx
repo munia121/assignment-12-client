@@ -60,14 +60,14 @@ const AddTest = () => {
 
     return (
         <div>
-            <div className="mx-auto">
+            <div className="mx-auto ">
                 <div className=" p-2  rounded-lg" style={{
                     backgroundImage: `url()`,
 
                 }}>
                     <h2 className="text-3xl font-extrabold text-center"> Add A test</h2>
 
-                    <form onSubmit={handlerSubmit} className=" p-5 lg:w-[800px] mx-auto border-[#f29c94] ">
+                    <form onSubmit={handlerSubmit} className=" p-10 mt-10 lg:w-[800px] mx-auto border rounded-xl  border-sky-600 shadow-xl ">
                         {/* form name and quanity row */}
                         <div className="  ">
                             <div className="">
@@ -75,7 +75,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Name</span>
                                     </div>
-                                    <input type="text" name="name" placeholder="Test name" className="input border-blue-400 input-bordered w-full " />
+                                    <input type="text" name="name" placeholder="Test name" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                             <div className=" ">
@@ -84,7 +84,7 @@ const AddTest = () => {
                                         <div className="label">
                                             <span className="label-text font-bold">Details </span>
                                         </div>
-                                        <input type="text" name="details" placeholder="Details here" className="input border-blue-400 input-bordered w-full " />
+                                        <input type="text" name="details" placeholder="Details here" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                     </label>
                                     {/* Display selected option */}
                                     {/* <p>You selected: {selectedOption}</p> */}
@@ -98,7 +98,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Price</span>
                                     </div>
-                                    <input type="text" name="price" placeholder="Price" className="input border-blue-400 input-bordered w-full " />
+                                    <input type="text" name="price" placeholder="Price" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                             <div className="">
@@ -106,7 +106,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Slots</span>
                                     </div>
-                                    <input type="text" name="slots" placeholder="slots here" className="input border-blue-400 input-bordered w-full " />
+                                    <input type="text" name="slots" placeholder="slots here" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                         </div>
@@ -117,7 +117,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold"> Date</span>
                                     </div>
-                                    <DatePicker className="border w-full border-blue-400 p-3 rounded-lg" selected={startDate} minDate={new Date()} endDate={new Date()} onChange={(date) => setStartDate(date)} />
+                                    <DatePicker className="border w-full border-sky-600 shadow-xl p-3 rounded-lg" selected={startDate} minDate={new Date()} endDate={new Date()} onChange={(date) => setStartDate(date)} />
                                     {/* <input type="text" name="date" placeholder="date" className="input border-[#f29c94] input-bordered w-full " /> */}
                                 </label>
                             </div>
@@ -126,7 +126,7 @@ const AddTest = () => {
                                     <div className="label">
                                         <span className="label-text font-bold">Image URL</span>
                                     </div>
-                                    <input type="text" name="image" placeholder="Image URL" className="input border-blue-400 input-bordered w-full " />
+                                    <input type="text" name="image" placeholder="Image URL" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                         </div>

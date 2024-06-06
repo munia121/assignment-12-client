@@ -64,9 +64,9 @@ const UpcomingAppoint = () => {
 
                 </div>
                 <div className="overflow-x-auto mt-20">
-                    <table className="table w-full">
+                    <table className="table  lg:w-[1200px] mx-auto border border-blue-600 ">
                         {/* head */}
-                        <thead className="font-bold text-sky-600 ">
+                        <thead className="font-bold text-sky-300 text-xl bg-sky-600">
                             <tr>
                                 <th>No</th>
                                 <th>Test Name</th>
@@ -94,7 +94,7 @@ const UpcomingAppoint = () => {
                                     <td>
                                         {data.time} 
                                     </td>
-                                    <td>
+                                    <td style={{ color: data.report === 'Pending' ? 'red' : 'green' }}>
                                         {data.report}
                                     </td>
                                     

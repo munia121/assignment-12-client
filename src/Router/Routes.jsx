@@ -19,6 +19,8 @@ import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
 import Reservation from "../Pages/Dashboard/Reservation";
 import PrivateRoute from "./PrivetRoute";
+import TestResult from "../Pages/TestResut/TestResult";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -58,6 +60,10 @@ export const router = createBrowserRouter([
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
+          path:'/dashboard',
+          element:<DashboardHome></DashboardHome>
+        },
+        {
           path:'upcomingAppoint',
           element:<UpcomingAppoint></UpcomingAppoint>
         },
@@ -70,9 +76,14 @@ export const router = createBrowserRouter([
           element:<UpdateProfile></UpdateProfile>
         },
         {
+          path:'testresult',
+          element:<TestResult></TestResult>
+        },
+        {
           path:'profile',
           element:<Profile></Profile>
         },
+        // admin
         {
           path:'addBanner',
           element:<AddBanner></AddBanner>

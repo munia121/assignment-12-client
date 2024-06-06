@@ -68,7 +68,7 @@ const AddBanner = () => {
                                     <div className="label">
                                         <span className="label-text">Name</span>
                                     </div>
-                                    <input type="text" name="name" placeholder="item name" className="input border-[#f29c94] input-bordered w-full " />
+                                    <input type="text" name="name" placeholder="item name" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                             <div className="md:w-1/2 ">
@@ -77,7 +77,7 @@ const AddBanner = () => {
                                         <div className="label">
                                             <span className="label-text">Title</span>
                                         </div>
-                                        <input type="text" name="title" placeholder="Title here" className="input border-[#f29c94] input-bordered w-full " />
+                                        <input type="text" name="title" placeholder="Title here" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                     </label>
                                     {/* Display selected option */}
                                     {/* <p>You selected: {selectedOption}</p> */}
@@ -91,7 +91,7 @@ const AddBanner = () => {
                                     <div className="label">
                                         <span className="label-text">Coupon Code Name</span>
                                     </div>
-                                    <input type="text" name="couponName" placeholder="Coupon Name" className="input border-[#f29c94] input-bordered w-full " />
+                                    <input type="text" name="couponName" placeholder="Coupon Name" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                             <div className="md:w-1/2">
@@ -99,7 +99,7 @@ const AddBanner = () => {
                                     <div className="label">
                                         <span className="label-text">Coupon Rate</span>
                                     </div>
-                                    <input type="text" name="couponRate" placeholder="couponRate" className="input border-[#f29c94] input-bordered w-full " />
+                                    <input type="text" name="couponRate" placeholder="couponRate" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ const AddBanner = () => {
                                     <div className="label">
                                         <span className="label-text"> Description</span>
                                     </div>
-                                    <input type="text" name="description" placeholder="description" className="input border-[#f29c94] input-bordered w-full " />
+                                    <input type="text" name="description" placeholder="description" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                             <div className="md:w-1/2">
@@ -118,7 +118,7 @@ const AddBanner = () => {
                                     <div className="label">
                                         <span className="label-text">Photo URL</span>
                                     </div>
-                                    <input type="text" name="photo" placeholder="Photo URL" className="input border-[#f29c94] input-bordered w-full " />
+                                    <input type="text" name="photo" placeholder="Photo URL" className="input border-sky-600 shadow-xl input-bordered w-full " />
                                 </label>
                             </div>
                         </div>
@@ -128,7 +128,7 @@ const AddBanner = () => {
 
                         {/* ***** form photo url */}
 
-                        <input type="submit" value="Add A Banner" className="btn btn-block mt-8 bg-[#f29c94] text-white" />
+                        <input type="submit" value="Add A Banner" className="btn btn-block mt-8 bg-sky-600 text-white" />
                     </form>
                 </div>
             </div>
