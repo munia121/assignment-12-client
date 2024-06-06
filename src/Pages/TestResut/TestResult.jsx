@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FiDownload } from "react-icons/fi";
+import { jsPDF } from "jspdf";
 
 const TestResult = () => {
     const axiosSecure = useAxiosSecure()
@@ -18,6 +19,28 @@ const TestResult = () => {
     })
     console.log(testResult)
     const url = 'https://i.ibb.co/Y0m6qj2/images-2.jpg'
+
+
+
+    const handleDownload = (test) => {
+        const doc = new jsPDF({
+            orientation: "landscape",
+            unit: "in",
+            format: [11, 8]
+        });
+
+        const lines = [
+            `Your Name: ${test.name}`,
+            `Your Email: ${test.email}`,
+            `Test Name: ${test.testName}`,
+        ];
+
+
+        doc.text(lines, 1, 1);
+        doc.save("two-by-four.pdf");
+    }
+
+
 
     return (
         <div>
@@ -45,7 +68,7 @@ const TestResult = () => {
                                     <th> Test Name</th>
                                     <th>Email</th>
                                     <th>Download</th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody className="text-xl">
@@ -59,7 +82,7 @@ const TestResult = () => {
                                             {test.email}
                                         </td>
                                         <td className="">
-                                            <button className="ml-10">
+                                            <button onClick={() => handleDownload(test)} className="ml-10">
                                                 <FiDownload />
                                             </button>
                                         </td>

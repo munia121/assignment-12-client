@@ -6,6 +6,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosCommon from '../../../hooks/useAxiosCommon'
 import toast from 'react-hot-toast'
+import logo from '../../../assets/logo-white.png'
 
 
 const Navbar = () => {
@@ -40,6 +41,7 @@ const Navbar = () => {
                         {/* Logo */}
                         <Link to='/'>
                             <h3 className='text-3xl'>Diagnostic Center</h3>
+                            {/* <img src={logo} alt="" /> */}
 
                         </Link>
                         {/* Dropdown Menu */}

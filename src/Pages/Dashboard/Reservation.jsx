@@ -105,7 +105,7 @@ const Reservation = () => {
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Status</th>
+                                <th>Report</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -120,7 +120,7 @@ const Reservation = () => {
                                         {data.email}
                                     </td>
                                     <td >
-                                        <button style={{ color: data.report === 'Pending' ? 'red' : 'green' }} onClick={() => handleUpdateStatus(data._id)}>
+                                        <button className="btn" style={{ color: data.report === 'Pending' ? 'red' : 'green' }} onClick={() => handleUpdateStatus(data._id)}>
                                             {data.report}
                                         </button>
                                     </td>

@@ -73,12 +73,13 @@ const AllUser = () => {
                 <div className="overflow-x-auto ">
                     <table className="table w-full border mt-10">
                         {/* head */}
-                        <thead>
+                        <thead className="text-lg">
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Change Role</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -90,16 +91,19 @@ const AllUser = () => {
                                     <th>{idx + 1}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td>
+                                    <td className={`${user.role === 'admin' ? 'text-fuchsia-600 font-bold' : 'text-teal-400 font-bold'}`}>
                                         {
-                                            user.role === 'admin' ? 'Admin' : <button
-                                                onClick={() => handleMakeAdmin(user)}
-                                                className="btn btn-sm  ">
-                                                <FaUsers className=" text-2xl "></FaUsers>
-                                            </button>}
+                                            user.role === 'admin' ? 'Admin' : "User"}
                                     </td>
                                     <td>
-                                        <button onClick={() => handleStatus(user)} className="btn">
+                                        <button
+                                            onClick={() => handleMakeAdmin(user)}
+                                            className="btn btn-sm  ">
+                                                Click
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className={`${user.status === 'Active' ? 'text-green-500 font-bold' : 'text-red-600 font-bold'} btn`} onClick={() => handleStatus(user)} >
                                             {user.status}
                                         </button>
                                     </td>
@@ -118,14 +122,14 @@ const AllUser = () => {
                                                             <h3 className="font-bold text-3g">Name: {modalData.name}</h3>
                                                             <p className=""><samp className="font-bold">Email:</samp> {modalData.email}</p>
                                                         </div>
-                                                       
-                                                            <p><samp className="font-bold">District:</samp> {modalData.district}</p>
-                                                            <p><samp className="font-bold">Upazila:</samp> {modalData.upazila}</p>
-                                                       
-                                                        
-                                                            <p><samp className="font-bold">Blood Group:</samp> {modalData.bloodGroup}</p>
-                                                            <p className=""><samp className="font-bold">Status:</samp> : <span className={`${modalData.status === 'Active' ? 'text-green-600' : 'text-red-600'}`}> {modalData.status}</span></p>
-                                                        
+
+                                                        <p><samp className="font-bold">District:</samp> {modalData.district}</p>
+                                                        <p><samp className="font-bold">Upazila:</samp> {modalData.upazila}</p>
+
+
+                                                        <p><samp className="font-bold">Blood Group:</samp> {modalData.bloodGroup}</p>
+                                                        <p className=""><samp className="font-bold">Status:</samp> : <span className={`${modalData.status === 'Active' ? 'text-green-600' : 'text-red-600'}`}> {modalData.status}</span></p>
+
                                                     </div>
 
                                                 )}

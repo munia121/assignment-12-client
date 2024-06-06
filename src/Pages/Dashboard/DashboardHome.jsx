@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import StatisticPage from "./StatisticPage";
 
 const DashboardHome = () => {
     const axiosSecure = useAxiosSecure()
@@ -19,7 +20,7 @@ const DashboardHome = () => {
             {
                 usersData.role === "admin" ?
                     <div>
-                        admin
+                        <StatisticPage></StatisticPage>
                     </div>
                     :
                     <div>
@@ -30,7 +31,7 @@ const DashboardHome = () => {
                                 <div className="hero-content text-center text-neutral-content">
                                     <div className="">
                                         <div >
-                                            <img className="h-24 border border-blue-700 border-4 w-24 rounded-full mx-auto" src={user?.photoURL} alt="" />
+                                            <img className="h-24  border-blue-700 border-4 w-24 rounded-full mx-auto" src={user?.photoURL} alt="" />
                                         </div>
                                         <h3 className="text-4xl">WelCome Your Dashboard</h3>
                                         <p className="mb-5 mt-5 lg:w-[800px]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>

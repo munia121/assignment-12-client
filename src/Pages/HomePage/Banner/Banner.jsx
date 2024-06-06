@@ -34,7 +34,7 @@ const Banner = () => {
                         <p className="mb-5 mt-5 lg:w-[800px]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
 
                         <Link to={'/allTest'}>
-                            <button className="btn bg-sky-500 font-bold text-white text-lg">All Test</button>
+                            <button className="btn bg-sky-600 font-bold text-white text-lg">All Test</button>
                         </Link>
                     </div>
                 </div>

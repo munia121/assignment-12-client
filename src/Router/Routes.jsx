@@ -21,6 +21,7 @@ import Reservation from "../Pages/Dashboard/Reservation";
 import PrivateRoute from "./PrivetRoute";
 import TestResult from "../Pages/TestResut/TestResult";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import StatisticPage from "../Pages/Dashboard/StatisticPage";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -107,6 +108,10 @@ export const router = createBrowserRouter([
         {
           path:'reservation',
           element:<Reservation></Reservation>
+        },
+        {
+          path:'dashboard',
+          element:<StatisticPage></StatisticPage>
         }
       ]
     }

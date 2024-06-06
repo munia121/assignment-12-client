@@ -22,13 +22,9 @@ const DashBoard = () => {
                     <ul className="menu p-4">
                         {
                             isAdmin ? <>
+                               
                                 <li>
                                     <NavLink end to={'/dashboard'}>
-                                        <FaHome></FaHome>
-                                        Admin Home</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to={'/dashboard/statistic'}>
                                         <FaHome></FaHome>
                                         Statistic</NavLink>
                                 </li>

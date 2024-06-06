@@ -83,7 +83,7 @@ const AllBanner = () => {
                                         {banner.couponRate}
                                     </td>
                                     <td>
-                                        <button  
+                                        <button className="btn" 
                                          style={{ color: banner.isActive ? 'green' : 'red' }}
                                         onClick={()=>toggleBannerStatus(banner)}>
                                             {banner.isActive ? 'Active' : 'Inactive'}
