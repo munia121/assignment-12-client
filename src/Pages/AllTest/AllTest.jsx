@@ -2,19 +2,52 @@ import AllTestCard from "./AllTestCard";
 // eslint-disable-next-line no-unused-vars
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { Button } from "@headlessui/react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const AllTest = () => {
 
     const [allData, setAllData] = useState([])
     const [search, setSearch] = useState('')
-    const today = new Date()
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(3)
+    const axiosSecure = useAxiosSecure()
+    // const today = new Date()
+    const  [counts, setCount] = useState()
+    // const count = allData.length
+    
+
+    console.log(counts)
+    const numberOfPages = Math.ceil(counts / itemsPerPage)
+
+    const pages = [];
+    for(let i = 0; i < numberOfPages; i++ ){
+        pages.push(i)
+    }
+
+    // const pages = [...Array(numberOfPages).keys()]
+    // console.log(pages)
+
+    const { data } = useQuery({
+        queryKey: ['data-count'],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get(`/data-count`)
+            // console.log(data)
+            setCount(data.count)
+            return data
+        }
+    })
+    // console.log(dataCount.count)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-test?search=${search}&date=${allData?.date}`)
+        fetch(`http://localhost:5000/all-test?search=${search}&date=${allData?.date}&page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setAllData(data))
-    }, [search, allData.date])
+    }, [search, allData.date, currentPage, itemsPerPage])
 
+
+    // console.log(allData)
 
     // const filterData = allData.filter(test => new Date(test.date) >= today)
     // const filterData = allData.filter(test => new Date(test.date) >= today);
@@ -53,6 +86,15 @@ const AllTest = () => {
 
                     allData.map(data => <AllTestCard key={data._id} data={data} ></AllTestCard>)
                 }
+            </div>
+            <div className="text-center mb-4">
+                <p>currentPage : {currentPage}</p>
+                ----{
+                    pages.map(page => <button className="btn"
+                        onClick={() => setCurrentPage(page)}
+                        key={page}
+                    >{page} </button>)
+                }-----
             </div>
         </div>
     );

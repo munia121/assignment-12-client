@@ -4,6 +4,7 @@ import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
+import { FiDownload } from "react-icons/fi";
 
 const AllUser = () => {
     const [modalData, setModalData] = useState(null);
@@ -18,6 +19,7 @@ const AllUser = () => {
         }
     })
 
+    // eslint-disable-next-line no-unused-vars
     const { data: usersData = [] } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
@@ -26,7 +28,25 @@ const AllUser = () => {
         }
     })
 
-    console.log(usersData)
+    // console.log(usersData)
+
+    const { data: bookedResult = [], } = useQuery({
+        queryKey: ['booked'],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get(`/booked`)
+            // console.log(data)
+            return data
+        }
+    })
+    // console.log(bookedResult)
+    
+
+    // const data = bookedResult.map(result =>{
+    //     console.log(result.email)
+    // })
+    // // console.log(data.email)
+
+    
 
 
     const handleMakeAdmin = (user) => {
@@ -82,6 +102,7 @@ const AllUser = () => {
                                 <th>Change Role</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>Download</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,7 +120,7 @@ const AllUser = () => {
                                         <button
                                             onClick={() => handleMakeAdmin(user)}
                                             className="btn btn-sm  ">
-                                                Click
+                                            Click
                                         </button>
                                     </td>
                                     <td>
@@ -107,6 +128,7 @@ const AllUser = () => {
                                             {user.status}
                                         </button>
                                     </td>
+
                                     <td>
                                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
                                         <button className="bg-sky-600 px-3 py-1 text-white rounded-md" onClick={() => handleShowModal(user)}>See Info</button>
@@ -136,6 +158,9 @@ const AllUser = () => {
                                             </div>
                                         </dialog>
 
+                                    </td>
+                                    <td>
+                                        <FiDownload  className="text-xl ml-10"/>
                                     </td>
                                 </tr>)
                             }

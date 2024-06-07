@@ -7,6 +7,7 @@ import { jsPDF } from "jspdf";
 const TestResult = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
+    const url = 'https://i.ibb.co/Y0m6qj2/images-2.jpg'
 
     // eslint-disable-next-line no-unused-vars
     const { data: testResult = [], isLoading, refetch } = useQuery({
@@ -18,7 +19,6 @@ const TestResult = () => {
         }
     })
     console.log(testResult)
-    const url = 'https://i.ibb.co/Y0m6qj2/images-2.jpg'
 
 
 
