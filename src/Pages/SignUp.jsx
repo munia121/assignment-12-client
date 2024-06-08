@@ -247,7 +247,7 @@ const SignUp = () => {
                                     placeholder='*******'
                                     className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-sky-500 bg-gray-200 text-gray-900'
                                 />
-                                <p>{passError}</p>
+                                <p className='text-red-500'>{passError}</p>
                             </div>
                         </div>
                     </div>

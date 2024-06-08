@@ -29,7 +29,7 @@ const Login = () => {
             // 1. sign in user
             await signIn(email, password)
 
-            navigate('/')
+            navigate(location?.state ? location.state : '/')
             toast.success('Sign Up successfully')
 
         }

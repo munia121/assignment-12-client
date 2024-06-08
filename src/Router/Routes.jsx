@@ -45,12 +45,12 @@ export const router = createBrowserRouter([
       },
       {
         path: '/alltest',
-        element: <AllTest></AllTest>
+        element: <PrivateRoute><AllTest></AllTest></PrivateRoute>
       },
       {
         path: '/details/:id',
-        // element:<PrivateRoute><TestDetails></TestDetails></PrivateRoute>,
-        element: <TestDetails></TestDetails>
+        element:<PrivateRoute><TestDetails></TestDetails></PrivateRoute>,
+        // element: <TestDetails></TestDetails>
       },
       {
         path: '/payment/:id',

@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { FaUsers } from "react-icons/fa";
+// import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { FiDownload } from "react-icons/fi";
+import { jsPDF } from "jspdf";
 
 const AllUser = () => {
     const [modalData, setModalData] = useState(null);
@@ -19,6 +20,7 @@ const AllUser = () => {
         }
     })
 
+    // console.log(users)
     // eslint-disable-next-line no-unused-vars
     const { data: usersData = [] } = useQuery({
         queryKey: ['user'],
@@ -30,23 +32,37 @@ const AllUser = () => {
 
     // console.log(usersData)
 
+    // eslint-disable-next-line no-unused-vars
     const { data: bookedResult = [], } = useQuery({
         queryKey: ['booked'],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/booked`)
             // console.log(data)
+
             return data
         }
     })
     // console.log(bookedResult)
-    
 
-    // const data = bookedResult.map(result =>{
-    //     console.log(result.email)
-    // })
-    // // console.log(data.email)
 
-    
+    const [mappedData, setMappedData] = useState([])
+
+    useEffect(() => {
+        const data = bookedResult.map(result => {
+            // Perform any transformation if needed
+            return result;
+        });
+
+        // Store mapped data in state
+        setMappedData(data);
+
+    }, [bookedResult])
+
+
+    console.log(mappedData)
+
+
+
 
 
     const handleMakeAdmin = (user) => {
@@ -81,6 +97,28 @@ const AllUser = () => {
         setModalData(user);
         document.getElementById('my_modal_3').showModal();
     };
+
+
+    const handleDownload = (user) => {
+        const doc = new jsPDF({
+            orientation: "landscape",
+            unit: "in",
+            format: [11, 8]
+        });
+
+        const lines = [
+            ` Name: ${user.name}`,
+            ` Email: ${user.email}`,
+            ` District: ${user.district}`,
+            ` Upazila: ${user.upazila}`,
+            ` Blood Group: ${user.bloodGroup}`,
+        ];
+
+
+        doc.text(lines, 1, 1);
+        doc.save("two-by-four.pdf");
+    }
+
 
 
 
@@ -160,7 +198,9 @@ const AllUser = () => {
 
                                     </td>
                                     <td>
-                                        <FiDownload  className="text-xl ml-10"/>
+                                        <button onClick={() => handleDownload(user)}>
+                                            <FiDownload className="text-xl ml-10" />
+                                        </button>
                                     </td>
                                 </tr>)
                             }
