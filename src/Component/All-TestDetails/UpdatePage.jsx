@@ -77,7 +77,7 @@ const UpdatePage = () => {
                 }}>
                     <h2 className="text-3xl font-extrabold text-center"> Update A test</h2>
 
-                    <form onSubmit={handlerSubmit} className=" p-5 lg:w-[800px] mx-auto border-[#f29c94] ">
+                    <form onSubmit={handlerSubmit} className="border  p-5 lg:w-[800px] mx-auto border-[#f29c94] ">
                         {/* form name and quanity row */}
                         <div className="  ">
                             <div className="">

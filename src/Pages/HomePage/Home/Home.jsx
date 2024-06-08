@@ -1,4 +1,5 @@
 
+import Apllication from "../../../Component/HomePageComponent/Apllication";
 import Promotions from "../../../Component/HomePageComponent/Promotions";
 import TestFeatured from "../../../Component/HomePageComponent/TestFeatured";
 import Personalized from "../../../Component/HomePageComponent/personalized/Personalized";
@@ -17,6 +18,7 @@ const Home = () => {
             </div>
             <Personalized></Personalized>
             <TestFeatured></TestFeatured>
+            <Apllication></Apllication>
         </div>
     );
 };

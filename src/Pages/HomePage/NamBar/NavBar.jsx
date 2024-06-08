@@ -6,7 +6,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosCommon from '../../../hooks/useAxiosCommon'
 import toast from 'react-hot-toast'
-import logo from '../../../assets/logo-white.png'
+import logo from '../../../assets/logo (1).png'
 
 
 const Navbar = () => {
@@ -41,8 +41,8 @@ const Navbar = () => {
                         {/* Logo */}
                         <div>
                             <Link to='/'>
-                                <h3 className='text-3xl'>Diagnostic Center</h3>
-                                {/* <img src={logo} alt="" /> */}
+                                {/* <h3 className='text-3xl'>Diagnostic Center</h3> */}
+                                <img src={logo} alt="" />
 
                             </Link>
                         </div>
@@ -53,6 +53,18 @@ const Navbar = () => {
                                     }`
                                 }>
                                     <span>Contact</span>
+                                </NavLink>
+                                <NavLink to={'/about-us'} className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 my-5 font-bold transition-colors duration-300 transform  hover:bg-gray-300   lg:block hidden hover:text-gray-700 ${isActive ? 'bg-blue-500  text-white rounded-lg' : 'text-blue-500 border border-blue-500 rounded-lg'
+                                    }`
+                                }>
+                                    <span>About Us</span>
+                                </NavLink>
+                                <NavLink to={'/blog'} className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 my-5 font-bold transition-colors duration-300 transform  hover:bg-gray-300   lg:block hidden hover:text-gray-700 ${isActive ? 'bg-blue-500  text-white rounded-lg' : 'text-blue-500 border border-blue-500 rounded-lg'
+                                    }`
+                                }>
+                                    <span>Blog</span>
                                 </NavLink>
                                 {user && <NavLink
                                     to='/alltest'
@@ -112,8 +124,14 @@ const Navbar = () => {
                                         >
                                             Home
                                         </Link>
-                                        <NavLink className={'block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'}>
+                                        <NavLink to={'/contact'} className={'block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'}>
                                             <span>Contact</span>
+                                        </NavLink>
+                                        <NavLink to={'/about-us'} className={'block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'}>
+                                            <span>About Us</span>
+                                        </NavLink>
+                                        <NavLink to={'/blog'} className={'block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'}>
+                                            <span>Blog</span>
                                         </NavLink>
 
                                         {user ? (
