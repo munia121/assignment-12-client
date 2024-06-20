@@ -81,25 +81,26 @@ export const router = createBrowserRouter([
       },
       {
         path: 'upcomingAppoint',
-        element: <UpcomingAppoint></UpcomingAppoint>
+        element: <PrivateRoute><UpcomingAppoint></UpcomingAppoint></PrivateRoute>
       },
-      {
-        path: 'allUser',
-        element: <AllUser></AllUser>
-      },
+      
       {
         path: 'updateProfile/:email',
         element: <UpdateProfile></UpdateProfile>
       },
       {
         path: 'testresult',
-        element: <TestResult></TestResult>
+        element: <PrivateRoute><TestResult></TestResult></PrivateRoute>
       },
       {
         path: 'profile',
         element: <Profile></Profile>
       },
       // admin
+      {
+        path: 'allUser',
+        element: <AllUser></AllUser>
+      },
       {
         path: 'addBanner',
         element: <AddBanner></AddBanner>

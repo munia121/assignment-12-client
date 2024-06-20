@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
-import {  useState } from "react";
+import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Swal from "sweetalert2";
 
@@ -24,7 +24,7 @@ const Reservation = () => {
     const { mutateAsync } = useMutation({
         mutationFn: async (id) => {
             const { data } = await axiosCommon.patch(`/update-status/${id}`)
-            if(data.modifiedCount){
+            if (data.modifiedCount) {
                 setUpdate(!update)
             }
             return data
@@ -106,6 +106,7 @@ const Reservation = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Report</th>
+                                <th>Submit for Delivered</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -120,8 +121,13 @@ const Reservation = () => {
                                         {data.email}
                                     </td>
                                     <td >
-                                        <button className="btn" style={{ color: data.report === 'Pending' ? 'red' : 'green' }} onClick={() => handleUpdateStatus(data._id)}>
+                                        <button className="btn" style={{ color: data.report === 'Pending' ? 'red' : 'green' }}>
                                             {data.report}
+                                        </button>
+                                    </td>
+                                    <td >
+                                        <button className="btn" onClick={() => handleUpdateStatus(data._id)}>
+                                            Submit
                                         </button>
                                     </td>
                                     <td>

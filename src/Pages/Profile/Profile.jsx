@@ -15,7 +15,7 @@ const Profile = () => {
     const [userData, setUserData] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${user?.email}`)
+        fetch(`https://assignment-12-server-phi-nine.vercel.app/user/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserData(data)

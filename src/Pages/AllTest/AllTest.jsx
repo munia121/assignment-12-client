@@ -14,12 +14,12 @@ const AllTest = () => {
     // eslint-disable-next-line no-unused-vars
     const [itemsPerPage, setItemsPerPage] = useState(3)
     const axiosSecure = useAxiosSecure()
-    // const today = new Date()
     const  [counts, setCount] = useState()
-    // const count = allData.length
+  
     
 
-    console.log(counts)
+    // console.log(allData.date)
+
     const numberOfPages = Math.ceil(counts / itemsPerPage)
 
     const pages = [];
@@ -41,9 +41,9 @@ const AllTest = () => {
         }
     })
     // console.log(dataCount.count)
-
+    // &date=${allData?.date}
     useEffect(() => {
-        fetch(`http://localhost:5000/all-test?search=${search}&date=${allData?.date}&page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`https://assignment-12-server-phi-nine.vercel.app/all-test?search=${search}&page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setAllData(data))
     }, [search, allData.date, currentPage, itemsPerPage])

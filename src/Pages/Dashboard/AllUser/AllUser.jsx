@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 // import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { FiDownload } from "react-icons/fi";
 import { jsPDF } from "jspdf";
@@ -45,21 +45,19 @@ const AllUser = () => {
     // console.log(bookedResult)
 
 
-    const [mappedData, setMappedData] = useState([])
+    // const [mappedData, setMappedData] = useState([])
 
-    useEffect(() => {
-        const data = bookedResult.map(result => {
-            // Perform any transformation if needed
-            return result;
-        });
+    // let i = []
+    // useEffect(() => {
+    //     const newData = bookedResult.map(result => {
+    //         i.push(result)
+    //         return result; 
+    //     });
 
-        // Store mapped data in state
-        setMappedData(data);
-
-    }, [bookedResult])
+    // }, [bookedResult])
 
 
-    console.log(mappedData)
+    // console.log(i)
 
 
 

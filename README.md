@@ -1,8 +1,8 @@
-# React + Vite
-# Website Name :
-# Admin userName :
-# Password :
-# live link: 
+
+# Website Name :MediPlus
+# Admin userName : muniyaakter21@gmail.com
+# Password : abcd1234
+# live link: https://stunning-lebkuchen-fe383d.netlify.app/
 
 
 
