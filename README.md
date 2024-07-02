@@ -14,5 +14,13 @@
 - Feature-3: Test Booking and Scheduling: Facilitates easy booking and scheduling of diagnostic tests with real-time availability.
 
 # Tecnology used: 
-<b> react, javascript, nodejs, mongodb, expressjs, firebase, html-css,tailwind.</b>
+<b> react, javascript, nodejs, mongodb, expressjs, firebase, stripe-payment, html-css,tailwind.</b>
 
+# Contributing
+Contributions are welcome! Please follow these steps to contribute:
+- Fork the repository.
+- Create a new branch (git checkout -b feature/your-feature).
+- Make your changes.
+- Commit your changes (git commit -am 'Add some feature').
+- Push to the branch (git push origin feature/your-feature).
+- Submit a pull request.
