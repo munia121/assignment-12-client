@@ -13,3 +13,4 @@
 - Feature-2: Here separate dashboards are careted for user and admin.
 - Feature-3: Test Booking and Scheduling: Facilitates easy booking and scheduling of diagnostic tests with real-time availability.
 
+# Tecnology used: 
