@@ -14,4 +14,5 @@
 - Feature-3: Test Booking and Scheduling: Facilitates easy booking and scheduling of diagnostic tests with real-time availability.
 
 # Tecnology used: 
+<b>bold</b>
 react, javascript, nodejs, mongodb, expressjs, firebase, html-css,tailwind.
